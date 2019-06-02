@@ -8,8 +8,8 @@ public class PlanetManager : MonoBehaviour
     [SerializeField]Planet planet;
     [SerializeField]int numbOfPlanetsInOneAxis=5;
     [SerializeField]int planetsSpacing=100;
-    [SerializeField] float minSpacingScale = 0.1f;
-    [SerializeField] float maxSpacingScale = 0.5f;
+    [SerializeField] float minSpacingScale = 10f;
+    [SerializeField] float maxSpacingScale =50f;
 
     private void Start()
     {

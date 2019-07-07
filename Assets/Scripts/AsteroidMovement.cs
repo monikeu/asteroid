@@ -14,8 +14,8 @@ public class AsteroidMovement : MonoBehaviour
         myT = transform;    
     }
 
-    [SerializeField] float collisionDamagePercentage = 0.00001f;
-    [SerializeField] float movementSpeed = 50f;
+    [SerializeField] float collisionDamagePercentage = 0.0001f;
+    [SerializeField] float movementSpeed = 30f;
     [SerializeField] float turnSpeed = 60f;
     [SerializeField] float minScale = .8f;
     [SerializeField] float maxScale = 1.2f;
@@ -27,6 +27,8 @@ public class AsteroidMovement : MonoBehaviour
         gameObject.AddComponent<Rigidbody>();
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
         gameObject.GetComponent<Rigidbody>().useGravity = false;
+        GetComponent<MeshRenderer>().enabled = false;
+
     }
 
     // Update is called once per frame

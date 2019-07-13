@@ -35,13 +35,9 @@ public class Planet : MonoBehaviour
         transform.Rotate(new Vector3(0, turnSpeed * Time.deltaTime, 0));
     }
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider other)
     {
         gameObject.SetActive(false);
     }
-
-    //private float getRandom()
-    //{
-    //    return (planetsSpacing * Random.Range(minSpacingScale, maxSpacingScale));
-    //}
+    
 }

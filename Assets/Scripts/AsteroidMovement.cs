@@ -2,12 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AsteroidMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-
-    Transform myT;
+    private Transform myT;
 
      void Awake()
     {
@@ -20,7 +19,7 @@ public class AsteroidMovement : MonoBehaviour
     [SerializeField] float minScale = .8f;
     [SerializeField] float maxScale = 1.2f;
     //  1.0f/(24*60*gameLenInMinutes*1.0f)              
-    [SerializeField] float resizeStep =0.000001f;
+    [SerializeField] float resizeStep =0.0001f;
 
     void Start()
     {
@@ -28,7 +27,6 @@ public class AsteroidMovement : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
         gameObject.GetComponent<Rigidbody>().useGravity = false;
         GetComponent<MeshRenderer>().enabled = false;
-
     }
 
     // Update is called once per frame
@@ -36,7 +34,7 @@ public class AsteroidMovement : MonoBehaviour
     {
         Turn();
         Thrust();
-        //UpdateSize();
+        UpdateSize();
         CheckSize();
     }
 
@@ -73,18 +71,15 @@ public class AsteroidMovement : MonoBehaviour
         if (myT.localScale.x < 0) {
             resizeStep = 0;
             gameObject.SetActive(false);
+            SceneManager.LoadScene("The end");
+            // tutaj sie konczy gra tak wlasciwie
         }
-
-        // tutaj sie konczy gra tak wlasciwie
     }
 
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("dupa collider");
         Vector3 scale = myT.localScale;
-        //scale.x = myT.localScale.x - (other.gameObject.transform.localScale.x * collisionDamagePercentage);
-        //scale.y = myT.localScale.y - (other.gameObject.transform.localScale.y * collisionDamagePercentage);
-        //scale.z = myT.localScale.z - (other.gameObject.transform.localScale.z * collisionDamagePercentage);
         scale.x = myT.localScale.x - (myT.localScale.x * collisionDamagePercentage);
         scale.y = myT.localScale.y - (myT.localScale.y * collisionDamagePercentage);
         scale.z = myT.localScale.z - (myT.localScale.z * collisionDamagePercentage);

@@ -8,7 +8,7 @@ public class EnemyPlanet : MonoBehaviour
     [SerializeField] float minScale = 1f;
     [SerializeField] float maxScale = 2f;
     [SerializeField] float d = 5f;
-    public Vector3 enemyPosition=new Vector3(100, 100, 0);
+    public Vector3 enemyPosition=new Vector3(100, 0, 100);
 
     void Start()
     {
@@ -30,6 +30,7 @@ public class EnemyPlanet : MonoBehaviour
     {
         if (other.gameObject.name == "Asteroid")
         {
+            Debug.Log("Game over - collapsed into enemy planet");
             gameObject.SetActive(false);
             SceneManager.LoadScene("The end");
 

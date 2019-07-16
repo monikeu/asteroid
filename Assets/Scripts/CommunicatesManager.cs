@@ -39,6 +39,7 @@ public class CommunicatesManager : MonoBehaviour
         Debug.Log("Started CommunicatesManager");
         enemyPlanet = FindObjectOfType<EnemyPlanet>();
         asteroid = FindObjectOfType<AsteroidMovement>();
+        diff = enemyPlanet.enemyPosition - asteroid.transform.position;
         Debug.Log(diff);
 
         // 23 and 29 are primes, which means that they will cross on 23*29 time, it's longer than desired game
